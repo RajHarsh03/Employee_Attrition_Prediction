@@ -1,0 +1,23 @@
+{
+  "best_model": "Decision Tree",
+  "metrics": {
+    "Logistic Regression": {
+      "accuracy": 0.8397790055248618,
+      "precision": 0.7666666666666667,
+      "recall": 0.7540983606557377,
+      "f1": 0.7603305785123967
+    },
+    "Decision Tree": {
+      "accuracy": 0.8453038674033149,
+      "precision": 0.7619047619047619,
+      "recall": 0.7868852459016393,
+      "f1": 0.7741935483870968
+    },
+    "Naive Bayes": {
+      "accuracy": 0.35911602209944754,
+      "precision": 0.3446327683615819,
+      "recall": 1.0,
+      "f1": 0.5126050420168067
+    }
+  }
+}

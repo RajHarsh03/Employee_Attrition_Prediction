@@ -1,0 +1,73 @@
+{% load static get_item %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Attrition Predictor</title>
+  <link rel="stylesheet" href="{% static 'predictor/styles.css' %}">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-header">
+      <div>
+        <p class="eyebrow">Human Resource Analytics</p>
+        <h1>Employee Attrition Prediction</h1>
+        <p class="lede">Review retention risk with the trained HR classifier and a clean employee profile input flow.</p>
+      </div>
+      <div class="metric-strip" aria-label="Model metrics">
+        <span><strong>{{ metrics.accuracy|floatformat:3 }}</strong> Accuracy</span>
+        <span><strong>{{ metrics.f1|floatformat:3 }}</strong> F1 Score</span>
+        <span><strong>{{ best_model }}</strong> Active Model</span>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="prediction-panel">
+        <span class="panel-kicker">Live Result</span>
+        {% if prediction %}
+          <strong class="prediction-label">{{ prediction.status }}</strong>
+          {% if prediction.leave_probability != None %}
+            <div class="risk-meter" style="--risk: {{ prediction.leave_probability }}%;">
+              <span></span>
+            </div>
+            <p class="risk-copy">{{ prediction.leave_probability }}% leave probability</p>
+          {% endif %}
+        {% else %}
+          <strong class="prediction-label muted">Awaiting Input</strong>
+          <div class="risk-meter empty">
+            <span></span>
+          </div>
+          <p class="risk-copy">Fill the profile and run a prediction.</p>
+        {% endif %}
+      </aside>
+
+      <section class="form-panel">
+        <div class="section-heading">
+          <span>Employee Profile</span>
+          <p>Core HR, role, tenure, and hiring attributes</p>
+        </div>
+
+        <form method="post" class="form-grid">
+          {% csrf_token %}
+          {% for feature in features %}
+            <label>
+              <span>{{ feature }}</span>
+              {% if feature in options %}
+                <select name="{{ feature }}">
+                  {% for choice in options|get_item:feature %}
+                    <option value="{{ choice }}" {% if values|get_item:feature == choice %}selected{% endif %}>{{ choice }}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="number" step="0.01" name="{{ feature }}" value="{{ values|get_item:feature }}">
+              {% endif %}
+            </label>
+          {% endfor %}
+          <button type="submit">Run Prediction</button>
+        </form>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
