@@ -180,14 +180,11 @@ Contributions are welcome! To improve the model or interface:
 2. Update the web interface in `predictor/templates/predictor/index.html`
 3. Test thoroughly before deployment
 
-## 📄 License
+## 📝 License
 
-This project is **open source and free to use**. You are free to:
-- ✅ Clone the repository
-- ✅ Modify the code for your own use
-- ✅ Deploy to production
-- ✅ Contributing improvements
+This project is licensed under the **MIT License** - feel free to use, modify, and distribute this project for both commercial and personal purposes. See the LICENSE file for details.
 
-Feel free to clone and adapt this project for your organization's needs!
+**Free to use!** This project is open source and available to everyone. No attribution required, but appreciated!
+
 
 
