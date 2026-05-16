@@ -2,19 +2,6 @@
 
 A machine learning-powered Django web application that predicts employee attrition (likelihood of leaving the company). The system analyzes employee characteristics and provides data-driven insights to help HR teams identify at-risk employees and implement retention strategies.
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [Model Training](#model-training)
-- [Dataset](#dataset)
-- [Model Performance](#model-performance)
-- [Project Structure](#project-structure)
 
 ## ✨ Features
 
